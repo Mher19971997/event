@@ -1,0 +1,37 @@
+{
+  app: {
+    env: 'local',
+    name: 'app',
+    logging: 'debug',
+    // 'log' | 'error' | 'warn' | 'debug' | 'verbose'
+  },
+  'app-api': {
+    version: 'v1',
+    endpoint: '/api',
+    http: {
+      host: '127.0.0.1',
+      port: 6001,
+    },
+  },
+  transports: ['http'],
+  db: {
+    postgres: {
+      url: 'postgresql://postgres:root@127.0.0.1:5432/event3',
+      logging: 'debug',
+      dialect: 'postgres',
+      database: 'event3',
+      repositoryMode: true,
+      retryDelay: 100,
+      retryAttempts: 1000,
+      autoLoadModels: true,
+      synchronize: true,
+      benchmark: true,
+      pool: {
+        min: 0,
+        max: 15,
+        idle: 0,
+        evict: 0,
+      },
+    },
+  },
+}
